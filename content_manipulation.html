@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manipulation</title>
+    <style>
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .highlight { background-color: #ffff99; }
+        .error { color: red; }
+        .success { color: green; }
+        .hidden { display: none; }
+        .new-item { background-color: #e7f3ff; border-left: 4px solid #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Content Manipulation Demo</h1>
+        
+        <div class="controls">
+            <button id="change-text">Change Text</button>
+            <button id="change-html">Change HTML</button>
+            <button id="toggle-style">Toggle Style</button>
+            <button id="add-attribute">Add Attribute</button>
+            <button id="create-element">Create Element</button>
+        </div>
+        
+        <div id="demo-card" class="card">
+            <h3>Demo Card</h3>
+            <p>This is a demo paragraph.</p>
+            <span>Click buttons above to see changes!</span>
+            <input type="text" id="new-input">
+        </div>
+        
+        <div id="output"></div>
+    </div>
+    
+    <script src="content_manipulation.js"></script>
+</body>
+</html>
