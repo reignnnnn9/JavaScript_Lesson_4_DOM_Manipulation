@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Management</title>
+    <style>
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .list-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px; 
+            margin: 5px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 4px;
+        }
+        .list-item.completed { 
+            background-color: #d4edda; 
+            text-decoration: line-through; 
+        }
+        .controls { margin: 20px 0; }
+        .controls input, .controls button { 
+            margin: 5px; 
+            padding: 8px; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dynamic List Management</h1>
+        
+        <div class="controls">
+            <input type="text" id="item-input" placeholder="Enter new item">
+            <button id="add-item">Add Item</button>
+            <button id="clear-completed">Clear Completed</button>
+        </div>
+        
+        <ul id="item-list">
+            <li class="list-item">
+                <span>Sample item 1</span>
+                <div>
+                    <button class="complete-btn">Complete</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </li>
+            
+        </ul>
+        
+        <div id="stats"></div>
+    </div>
+    
+    <script src="dynamic_list.js"></script>
+</body>
+</html>

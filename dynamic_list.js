@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (e.target.classList.contains('delete-button')) {
             deleteItem(e.target);
         }
-    });
+    })
     clearBtn.addEventListener('click', clearCompleted);
 
     // 3. Functions
@@ -35,14 +35,29 @@ document.addEventListener('DOMContentLoaded', function() {
         li.innerHTML = `
             <span>${text}</span>
             <div>
-            <button class="complete-button">Complete</button>
-            <button class="delete-button">Delete</button>
+                <button class="complete-button">Complete</button>
+                <button class="delete-button">Delete</button>
             </div>
         `;
         // Add the new item to the list 
-        itemList.appendChiled(li);
+        itemList.appendChild(li);
         itemInput.value = ''; // Clear the input
         // Update stats
+        updateStats();
+    }
+    
+    function toggleComplete(button) {
+        // Find the parent list item using closest()
+        const listItem = button.closest('.list-item');
+        listItem.classList.toggle('completed');
+
+        // Change button text based on completion status
+        const span = listItem.querySelector('span');
+        if (listItem.classList.contains('completed')) {
+            button.textContent = 'Undo';
+        } else {
+            button.textContent = 'Complete';
+        }
         updateStats();
     }
 
@@ -62,20 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateStats() {
         // Calculate and display statistics
-
-    }
-
-    function toggleComplete(button) {
-        // Find the parent list item using closest()
-        const listItem = button.closest('.list-item');
-        listItem.classList.toggle('completed');
-
-        // Change button text based on completion status
-        const span = listItem.querySelector('span');
-        if (listItem.classList.contains('completed')) {
-            button.textContent = 'Undo';
-        } else {
-            button.textContent = 'Complete';
-        }
+        const totalItems = itemList.children.length;
+        const completedItems = itemList.querySelectorAll('.list-item.completed').length;
+        const remainingItems = totalItems - completedItems;
+        
+        stats.innerHTML = `
+            <p><strong>Stats:</strong> Total: ${totalItems} | Completed: ${completedItems} | Remaining: ${remainingItems}</p>
+        `;
     }
 });
